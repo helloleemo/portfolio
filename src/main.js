@@ -1,7 +1,8 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+
+import App from './App.vue'
+import router from './router'
 
 // Vuetify
 import { createVuetify } from 'vuetify'
@@ -12,12 +13,10 @@ import * as directives from 'vuetify/directives'
 
 //BS
 import './assets/all.scss'
+import './assets/main.css'
 
 //vue-easy-lightbox
 import VueEasyLightbox from 'vue-easy-lightbox'
-
-import App from './App.vue'
-import router from './router'
 
 const app = createApp(App)
 
