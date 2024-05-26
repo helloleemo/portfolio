@@ -6,7 +6,7 @@ export default {
   },
   methods: {
     getToIndex() {
-      this.$router.push('/portfolio/home')
+      this.$router.push('/view/home')
     }
   },
   created() {
