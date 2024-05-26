@@ -19,7 +19,7 @@ const router = createRouter({
     },
     //portfolio
     {
-      path: '/portfolio',
+      path: '/view',
       component: () => import('../views/PortFolio.vue'),
       children: [
         {
