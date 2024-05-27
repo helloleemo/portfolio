@@ -267,7 +267,7 @@
   <v-container class="container mx-auto imgpadding">
     <!-- tag -->
     <div class="d-flex justify-center ga-2">
-      <div v-for="tag in tagItems" :key="tag.title">
+      <div v-for="tag in tagItems" :key="tag.title" class="py-5">
         <v-chip
           @click="sortItems(tag.title)"
           :class="{ 'selected-tag': tag.title === tagSelected }"
@@ -304,6 +304,7 @@
       </v-col>
     </v-row>
   </v-container>
+
   <!-- footer -->
   <footer class="bg-primary py-10 d-flex justify-center">
     <v-icon icon="mdi-email-check-outline" class="pr-5"></v-icon> leemo.tseng@gmail.com
@@ -732,6 +733,10 @@ $complementary: #764d32;
 $analogous: #32766f;
 $grey: #78909c;
 $lighterGrey: #b0bec5;
+
+template {
+  font-family: 'Noto Sans Traditional Chinese';
+}
 
 /* ----------- */
 /*   Section  */
