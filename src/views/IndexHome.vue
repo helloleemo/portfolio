@@ -169,7 +169,7 @@
             <!-- 綁定插槽v-slot和v-bind，整個都是hover要出現的 -->
             <v-hover v-slot="{ isHovering, props }">
               <v-card :href="item.toolUrl" target="_blank" v-bind="props" class="m-2">
-                <v-img :src="getToolSrc(item.imgUrl)" height="250" cover>
+                <v-img :src="getToolSrc(item.imgUrl)" height="350" cover>
                   <!-- hover出現的部分 -->
                   <v-expand-transition class="custom-bg" style="height: 100%">
                     <v-card-item
@@ -284,7 +284,7 @@
             <div class="imgbox imgboxGallery">
               <div class="hoverGallery text-start p-2">
                 <div class="textGallery px-3">
-                  <chips class="text-subtitle-1 text-white">{{ img.category }}</chips>
+                  <v-chip class="text-subtitle-1 text-white">{{ img.category }}</v-chip>
                   <h4 class="text-h5 text-white font-weight-bolder">{{ img.title }}</h4>
                   <p class="text-subtitle-1 text-white">{{ img.subtitle }}</p>
                   <p class="text-body-2 text-white">{{ img.description }}</p>
@@ -305,7 +305,7 @@
     </v-row>
   </v-container>
 
-  <!-- footer -->
+  <!-- footerfooter -->
   <div class="bg-primary py-10 d-flex justify-center">
     <v-icon icon="mdi-email-check-outline" class="pr-5"></v-icon> leemo.tseng@gmail.com
   </div>
@@ -708,7 +708,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $primary: #325b76;
 $secondary: #4e7e9f;
 $complementary: #764d32;

@@ -4,16 +4,16 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+//BS
+import './assets/all.scss'
+import './assets/main.css'
+
 // Vuetify
 import { createVuetify } from 'vuetify'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
-
-//BS
-import './assets/all.scss'
-import './assets/main.css'
 
 //vue-easy-lightbox
 import VueEasyLightbox from 'vue-easy-lightbox'

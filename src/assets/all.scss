@@ -1,7 +1,13 @@
 //portfolio;
-
-@import '../../node_modules/bootstrap/scss/bootstrap';
 @import '../../node_modules/bootstrap/scss/functions';
+@import '../../src/assets/helpers/variables';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+//helper方式
+@import '../../src/assets/helpers/functions'; //helper
+// @import '../../src/assets/helpers/mixins'; //helper
+@import '../../node_modules/bootstrap/scss/bootstrap';
+// @import '../../node_modules/bootstrap/scss/functions';
 @import '../../src/assets/helpers/_variables'; //自己的變數
 
 //Google font : Pattaya

@@ -7,11 +7,11 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   base: '/portfolio/'
-  // css: {
+  // scss: {
   //   preprocessorOptions: {
   //     // 导入scss预编译程序
   //     scss: {
-  //       additionalData: "@import '../../node_modules/bootstrap/scss/functions.scss'"
+  //       additionalData: "@import './src/assets/helper/_functions.scss'"
   //     }
   //   }
   // }
