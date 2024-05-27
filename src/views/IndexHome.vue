@@ -264,9 +264,9 @@
   <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle" id="section-gallery">
     <span>｜</span>Gallery<span>｜</span>
   </h3>
-  <v-container class="container mx-auto">
+  <v-container class="container mx-auto imgpadding">
     <!-- tag -->
-    <div class="d-flex justify-center ga-2 pb-16">
+    <div class="d-flex justify-center ga-2">
       <div v-for="tag in tagItems" :key="tag.title">
         <v-chip
           @click="sortItems(tag.title)"
@@ -304,6 +304,10 @@
       </v-col>
     </v-row>
   </v-container>
+  <!-- footer -->
+  <footer class="bg-primary py-10 d-flex justify-center">
+    <v-icon icon="mdi-email-check-outline" class="pr-5"></v-icon> leemo.tseng@gmail.com
+  </footer>
 </template>
 
 <script>
@@ -733,6 +737,12 @@ $lighterGrey: #b0bec5;
 /*   Section  */
 /* ----------- */
 
+.navbar {
+  a {
+    cursor: pointer;
+  }
+}
+
 .section {
   padding: 100px 0px;
 }
@@ -869,5 +879,8 @@ li {
 .textGallery {
   position: relative;
   top: 30%;
+}
+.imgpadding {
+  margin-bottom: 300px;
 }
 </style>
