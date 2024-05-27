@@ -12,7 +12,9 @@
   <!--  -->
   <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="https://picsum.photos/200/20" alt="" /></a>
+      <a class="navbar-brand" href="#"
+        ><img :src="getOtherSrc('logo.svg')" alt="" style="width: 20%"
+      /></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -26,9 +28,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
-          <a class="px-4 custom-hover nav-link text-white" href="#">Work</a>
-          <a class="px-4 custom-hover nav-link text-white" href="#">Achievement</a>
-          <a class="px-4 custom-hover nav-link text-white" href="#">Gallery</a>
+          <a class="px-4 custom-hover nav-link text-white" @click="scrollToSection('work-section')"
+            >New</a
+          >
+          <a
+            class="px-4 custom-hover nav-link text-white"
+            @click="scrollToSection('section-achievement')"
+            >Achievement</a
+          >
+          <a
+            class="px-4 custom-hover nav-link text-white"
+            @click="scrollToSection('section-gallery')"
+            >Gallery</a
+          >
         </div>
       </div>
     </div>
@@ -66,22 +78,27 @@
   >
     <template v-slot:prepend>
       <v-avatar color="blue-darken-2" size="50">
-        <v-img cover src="../assets/img/profile_250x250.png" alt="avatar"></v-img>
+        <v-img :src="getOtherSrc('img/profile-250x250.png')" alt="avatar"></v-img>
       </v-avatar>
     </template>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn class="custom-hover-btn">See Work</v-btn>
-      <v-btn class="custom-hover-btn"><v-icon icon="mdi-download"> </v-icon>Download Resume</v-btn>
+      <v-btn @click="scrollToSection('work-section')" class="custom-hover-btn">See Work</v-btn>
+      <v-btn
+        href="https://drive.google.com/file/d/1zmDyOIYZbJLMdjTDTlWCtbFXdnxyYfZD/view?usp=drive_link"
+        target="_blank"
+        class="custom-hover-btn"
+        ><v-icon icon="mdi-download"> </v-icon>Download Resume</v-btn
+      >
     </v-card-actions>
   </v-card>
 
   <!--  -->
   <!-- Work -->
   <!--  -->
-  <div class="section">
+  <div class="section" id="work-section">
     <h3 class="mx-auto text-center font-weight-bold text-h5 SectionTitle">
-      <span>｜</span>Work<span>｜</span>
+      <span>｜</span>New<span>｜</span>
     </h3>
     <v-fade-transition mode="out-in">
       <v-container class="container">
@@ -119,10 +136,12 @@
                         class="center-actions"
                         style="display: flex; justify-content: flex-end"
                       >
-                        <v-btn class="custom-hover-btn"
+                        <v-btn :href="item.link2" target="_blank" class="custom-hover-btn"
                           ><v-icon icon="mdi-github"></v-icon>Github</v-btn
                         >
-                        <v-btn class="custom-hover-btn">View Web</v-btn>
+                        <v-btn :href="item.link" target="_blank" class="custom-hover-btn"
+                          >View Web</v-btn
+                        >
                       </v-card-actions>
                     </v-card>
                   </div>
@@ -149,8 +168,8 @@
           <v-col v-for="item in tools" :key="item" cols="12" sm="6" md="4" class="h-100">
             <!-- 綁定插槽v-slot和v-bind，整個都是hover要出現的 -->
             <v-hover v-slot="{ isHovering, props }">
-              <v-card v-bind="props" class="m-2">
-                <v-img :src="item.imgUrl" height="250" cover>
+              <v-card :href="item.toolUrl" target="_blank" v-bind="props" class="m-2">
+                <v-img :src="getToolSrc(item.imgUrl)" height="250" cover>
                   <!-- hover出現的部分 -->
                   <v-expand-transition class="custom-bg" style="height: 100%">
                     <v-card-item
@@ -179,7 +198,7 @@
   <!-- Achievement -->
   <!--  -->
 
-  <div class="section sectionAchievement">
+  <div class="section sectionAchievement" id="section-achievement">
     <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle">
       <span>｜</span>Achievement<span>｜</span>
     </h3>
@@ -199,7 +218,7 @@
               @click="selectItem(item)"
               v-bind="props"
             >
-              <v-img :src="item.imgUrl || 'https://picsum.photos/600/400'" cover>
+              <v-img :src="getAchievementSrc(item.imgUrl)" cover>
                 <div class="d-flex fill-height align-center justify-center">
                   <v-scale-transition>
                     <div v-if="isHovering" class="white overlay d-flex flex-column justify-center">
@@ -224,7 +243,12 @@
               <v-icon icon="mdi-account" class="pe-2 text-grey"></v-icon>{{ selectedItem.subtitle }}
             </p>
             <p class="text-center w-75">{{ selectedItem.description }}</p>
-            <v-btn v-if="selectedItem.link !== ''" variant="outlined" class="custom-hover-btn"
+            <v-btn
+              v-if="selectedItem.link !== ''"
+              :href="selectedItem.link"
+              target="_blank"
+              variant="outlined"
+              class="custom-hover-btn"
               >view more</v-btn
             >
           </div>
@@ -237,7 +261,7 @@
   <!-- Gallery -->
   <!--  -->
   <hr class="mt-5" />
-  <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle">
+  <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle" id="section-gallery">
     <span>｜</span>Gallery<span>｜</span>
   </h3>
   <v-container class="container mx-auto">
@@ -308,6 +332,16 @@ export default {
           category: 'Graphics'
         },
         {
+          id: '08',
+
+          title: 'Grababe',
+          imgUrl: '08-奶瓶抓握器',
+          subtitle: '奶瓶抓握器設計',
+          description:
+            '透過市場調查，我們發現現有的嬰兒用品往往忽略了握把設計對於嬰兒早期發展的重要性，特別是在手部協調與力量訓練方面。因此，我們提出了一個結合認知發展與功能性的奶瓶抓握器。',
+          category: 'Products'
+        },
+        {
           id: '03',
           title: '醫療教材設計',
           imgUrl: '03-乳房攝影衛教',
@@ -347,16 +381,6 @@ export default {
           subtitle: '櫻花廚具設計',
           description:
             '悠食煮廚的智慧互動介面能為你增添家人互相照應的關係，透過科技創造出更人性化、未來化的廚房。 ',
-          category: 'Products'
-        },
-        {
-          id: '08',
-
-          title: 'Grababe',
-          imgUrl: '08-奶瓶抓握器',
-          subtitle: '奶瓶抓握器設計',
-          description:
-            '透過市場調查，我們發現現有的嬰兒用品往往忽略了握把設計對於嬰兒早期發展的重要性，特別是在手部協調與力量訓練方面。因此，我們提出了一個結合認知發展與功能性的奶瓶抓握器。',
           category: 'Products'
         },
         {
@@ -449,8 +473,8 @@ export default {
       selectedItem: null,
       cardTitle: `LeeMo`,
       cardSubtitle: `前端設計`,
-      cardText: `曾擔任平面設計、產品設計、產品規劃和專案管理，並且同時自營個人工作室;在職期間負責專案設計、企劃執行、管理與廠商溝通印製流程及跨部門協調事宜。
-      目前專注於前端設計專案與技術,進行使用者體驗研究、介面設計與前端程式撰寫。`,
+      cardText: `目前專注於前端設計專案與技術，進行使用者體驗研究、介面設計與前端程式撰寫。曾擔任平面設計、產品設計、產品規劃和專案管理，並且同時自營個人工作室；在職期間負責專案設計、企劃執行、管理與廠商溝通印製流程及跨部門協調事宜。
+      `,
       cardWork: [
         {
           title: '藝椅',
@@ -475,25 +499,27 @@ export default {
           subtitle: 'subtitle',
           description: [
             '網站類型｜購物車網站',
-            '使用技術｜Vue3 optionAPI',
+            '使用框架｜Vue3 optionAPI',
             '套件｜Bootstrap5、Axios、vee-validate、Mitt'
           ],
-          other: 'c',
-          imgUrl: 'work1'
-        },
-        // '../assets/img/work1.gif'
-        {
-          title: '飲料訂單系統',
-          subtitle: 'subtitle',
-
-          description: [
-            '網站類型｜購物車網站',
-            '使用技術｜Vue3 optionAPI',
-            '套件｜Bootstrap5、Axios、vee-validate、Mitt'
-          ],
-          other: 'c',
-          imgUrl: 'work1'
+          other: 'a',
+          imgUrl: 'work1',
+          link: 'https://helloleemo.github.io/shoppingweb/#/user/view',
+          link2: 'https://github.com/helloleemo/shoppingweb'
         }
+        // '../assets/img/work1.gif'
+        // {
+        //   title: '飲料訂單系統',
+        //   subtitle: 'subtitle',
+
+        //   description: [
+        //     '網站類型｜購物車網站',
+        //     '使用技術｜Vue3 optionAPI',
+        //     '套件｜Bootstrap5、Axios、vee-validate、Mitt'
+        //   ],
+        //   other: 'c',
+        //   imgUrl: 'work1'
+        // }
       ],
       tools: [
         {
@@ -501,27 +527,33 @@ export default {
           subtitle: 'Domotoro timer',
           icon: 'mdi-timer-outline',
           description: '可設定專注、休息時間，根據不同時間變換不同背景。',
-          imgUrl: 'https://picsum.photos/600/201',
-          toolUrl: 'toolUrl'
+          imgUrl: 'work-pomodoro',
+          toolUrl: 'https://helloleemo.github.io/work-vueTomato.html'
         },
-        {
-          title: '景點查找系統',
-          subtitle: 'Abstract search',
-
-          icon: 'mdi-map-search-outline',
-
-          description: '以Axios套件串接政府資料，可搜尋相關景點。',
-          imgUrl: 'https://picsum.photos/600/202',
-          toolUrl: 'toolUrl'
-        },
+        // {
+        //   title: '景點查找系統',
+        //   subtitle: 'Abstract search',
+        //   icon: 'mdi-map-search-outline',
+        //   description: '以Axios套件串接政府資料，可搜尋相關景點。',
+        //   imgUrl: 'https://picsum.photos/600/202',
+        //   toolUrl: 'toolUrl'
+        // },
         {
           title: '待辦清單',
           subtitle: 'To do list',
 
           icon: 'mdi-sticker-check-outline',
           description: '新增反序清單、移除待辦、標記優先順序。',
-          imgUrl: 'https://picsum.photos/600/203',
-          toolUrl: 'toolUrl'
+          imgUrl: 'work-todolist',
+          toolUrl: 'https://helloleemo.github.io/portfolio/#/view/todolist'
+        },
+        {
+          title: '攝影作品展示網站',
+          subtitle: 'Display photography work',
+          icon: 'mdi-sticker-check-outline',
+          description: '用Ajax方式取得圖片與相關文字。',
+          imgUrl: 'work-api',
+          toolUrl: 'https://helloleemo.github.io/work-api.html'
         }
       ],
       achievement: [
@@ -531,7 +563,7 @@ export default {
           subtitle: '使用者體驗研究｜系統介面優化｜團隊合作',
           description:
             '期盼透過零接觸的復健訓練服務，透過遠距醫療與數位醫療形式，提供復健者於居家進行高強度復健訓練，同時也減少醫院醫師的負擔，減少患者頻繁出入醫療院所的次數，同時也透過大數據分析協助醫師判斷，達到一個新的醫療模式。 ',
-          imgUrl: 'https://picsum.photos/600/400?random=1',
+          imgUrl: 'hpss',
           link: 'https://helloleemo.github.io/work-hpss.html'
         },
         {
@@ -540,8 +572,8 @@ export default {
           subtitle: '產品設計',
           description:
             '科技能解決時間的問題，但同時卻缺乏溫度及互動的連結，因此智能廚房不但能輕鬆煮食及快速清潔，甚至也能計算家人的用餐份量。然而現代人生活忙碌，對於廚房零基礎的人來說，要能快速煮出一道料理，是件不容易的事情。不過沒關係，悠食煮廚可以透過智能的食譜跟輔助，幫助你完成一桌料理，讓零基礎的你也能成為米其林大廚。悠食煮廚的智慧互動介面能為你增添家人互相照應的關係，透過科技創造出更人性化、未來化的廚房。 ',
-          imgUrl: 'https://picsum.photos/600/400?random=2',
-          link: 'https://helloleemo.github.io/work-kdfurniture.html'
+          imgUrl: '悠食煮廚',
+          link: 'https://helloleemo.github.io/work-sakura.html'
         },
         {
           tag: '2021 史丹佛長壽中心設計競賽 亞洲入圍',
@@ -549,7 +581,7 @@ export default {
           subtitle: '產品設計｜使用者經驗研究',
           description:
             '智遊科技服務公司開發的aiFree-智慧健康好夥伴，主要提供於高齡健促者運動訓練使用。與感測器與護膝搭配使用，其介面內容主要提供使用者不同的訓練方式，透過運動教練的引導，促進使用者做出正確的動作。',
-          imgUrl: 'https://picsum.photos/600/400?random=3',
+          imgUrl: '史丹佛入圍照片',
           link: 'https://helloleemo.github.io/work-hpss.html'
         },
         {
@@ -558,7 +590,7 @@ export default {
           subtitle: '產品設計',
           description:
             'UNI-ONE，讓收納再也不是一件頭痛的事，只需像是積木般拼湊出需要的功能櫃子，透過UNI-ONE模組化、客製化、彈性化的設計，你能夠想像的變化，甚至還未想到的可能性，UNI-ONE都能夠幫你實現——多變的生活空間，UNI-ONE，由你來定義！適合租屋族、多少空間就使用多少組件，擁有最大的空間和最剛好的家具！',
-          imgUrl: 'https://picsum.photos/600/400?random=4',
+          imgUrl: 'Kd家具',
           link: 'https://helloleemo.github.io/work-kdfurniture.html'
         },
         {
@@ -567,24 +599,26 @@ export default {
           subtitle: '使用者研究｜產品設計',
           description:
             '本系統設計給4-6歲有構音異常的兒童，將治療介入過程中的圖卡以APP形式呈現，並結合紀錄系統讓治療師能夠追蹤及安排療程進度。前期研究結合腦波儀測試圖卡類型及兒童專注力的相關性，中期與治療師合作圖形設計。每個圖形配合專注力圖像以及聲母及韻母練習，讓兒童能夠全面進行構音訓練。',
-          imgUrl: 'https://picsum.photos/600/400?random=5',
+          imgUrl: 'work-articulation00',
           link: 'https://helloleemo.github.io/work-articulation.html'
         },
         {
           tag: '2022 Logitech - Design for Gaming - Honorable mention',
           title: 'Ready to Shine',
           subtitle: 'Project management | Product Design',
-          description: 'description',
-          imgUrl: 'https://picsum.photos/600/400?random=5',
-          link: ''
+          description:
+            'Generation Z, are highly accepting of new things, and get used to rely on using virtual carriers,such as ommunities, taking courses, and playing games. They born in the age of  information explosion ,usually get information from the Internet, but it is impossible to tell whether the information is true or not. The development of social software has also profoundly affected the social patterns of Generation Z. Even if they enjoy advanced and perfect technological equipment,  they still face different difficulties, such as self-identity, cyberbullying, mental health, etc. which compared with the perfect image on the Internet, also may cause self-lost in their life. Some studies even call Generation Z: the loneliest generation.',
+          imgUrl: 'gaming',
+          link: 'https://drive.google.com/file/d/1CJhixRJI3HYpRss_nmGFSFc-olIZgWFH/view?usp=sharing'
         },
         {
           tag: '2021 成功大學 學院研究競賽 第二名 ',
           title: '疫起光臨',
           subtitle: '產品設計 | 提案規劃',
-          description: 'description',
-          imgUrl: 'https://picsum.photos/600/400?random=5',
-          link: ''
+          description:
+            '疫情時由於外在的行動範圍遭到限制,因此我們轉而向內,從自求心靈的穩定衡。「正念」已被研究證實能有效解心理壓力，緩解心理疾病的症狀。我們設計了正念座，藉由內部獨立的空間與聲音、光線的引導讓人們進入正念的狀態，在柔和光線的環繞下，淨化被焦慮淹沒的思緒，是我們對抗疫情所帶來心理問題的第一步。',
+          imgUrl: '疫起光臨',
+          link: 'https://drive.google.com/file/d/12B1aGuAsM950sD2lWuGggfZhvCUKycgA/view?usp=sharing'
         },
         {
           tag: '2021 奇想設計大賽 創新科技組 佳作',
@@ -592,7 +626,8 @@ export default {
           subtitle: '使用者體驗研究 | 產品設計',
           description:
             '智遊科技服務公司開發的aiFree-智慧健康好夥伴，主要提供於高齡健促者運動訓練使用。與感測器與護膝搭配使用，其介面內容主要提供使用者不同的訓練方式，透過運動教練的引導，促進使用者做出正確的動作。',
-          imgUrl: 'https://picsum.photos/600/400?random=5'
+          imgUrl: 'work-hpss01',
+          link: ''
         }
       ]
     }
@@ -617,6 +652,30 @@ export default {
     getGifSrc(imgUrl) {
       try {
         return new URL(`../assets/img/${imgUrl}.gif`, import.meta.url).href
+      } catch (error) {
+        console.error(`Image not found for ${imgUrl}:`, error)
+        return 'error'
+      }
+    },
+    getToolSrc(imgUrl) {
+      try {
+        return new URL(`../assets/tools/${imgUrl}.png`, import.meta.url).href
+      } catch (error) {
+        console.error(`Image not found for ${imgUrl}:`, error)
+        return 'error'
+      }
+    },
+    getAchievementSrc(imgUrl) {
+      try {
+        return new URL(`../assets/achievement/${imgUrl}.png`, import.meta.url).href
+      } catch (error) {
+        console.error(`Image not found for ${imgUrl}:`, error)
+        return 'error'
+      }
+    },
+    getOtherSrc(imgUrl) {
+      try {
+        return new URL(`../assets/${imgUrl}`, import.meta.url).href
       } catch (error) {
         console.error(`Image not found for ${imgUrl}:`, error)
         return 'error'
@@ -648,6 +707,15 @@ export default {
     },
     selectItem(item) {
       this.selectedItem = item
+    },
+    scrollToSection(id) {
+      const element = document.getElementById(id)
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth'
+        })
+      }
     }
   }
 }
