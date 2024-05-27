@@ -306,9 +306,9 @@
   </v-container>
 
   <!-- footer -->
-  <footer class="bg-primary py-10 d-flex justify-center">
+  <div class="bg-primary py-10 d-flex justify-center">
     <v-icon icon="mdi-email-check-outline" class="pr-5"></v-icon> leemo.tseng@gmail.com
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -319,6 +319,16 @@ export default {
       indexRef: 0,
       imgsRef: [],
       gallery: [
+        {
+          id: '15',
+
+          title: '寶島探險',
+          imgUrl: '10-HPSS',
+          subtitle: '使用者體驗研究',
+          description:
+            '高齡者在使用該版本的介面時，是否可以順利使用各項介面所提供的功能，以及是否能順利取得其在使用時所需要的資訊',
+          category: 'Products'
+        },
         {
           id: '01',
           title: '梅好薑來',
@@ -446,16 +456,6 @@ export default {
           description:
             '希望打造以「麻醉安全」為首要的麻醉環境，並提倡正確的麻醉觀念，堅持高度的醫療專業，所有手術不會讓麻醉護理師單獨作業，一律是麻醉專科醫師執行，守護每一位客人更小心、更安心的麻醉安全。',
           category: 'Graphics'
-        },
-        {
-          id: '15',
-
-          title: '寶島探險',
-          imgUrl: '10-HPSS',
-          subtitle: '使用者體驗研究',
-          description:
-            '高齡者在使用該版本的介面時，是否可以順利使用各項介面所提供的功能，以及是否能順利取得其在使用時所需要的資訊',
-          category: 'Products'
         }
       ],
 
@@ -480,24 +480,6 @@ export default {
       cardSubtitle: `前端設計`,
       cardText: `目前專注於前端設計專案與技術，進行使用者體驗研究、介面設計與前端程式撰寫。曾擔任平面設計、產品設計、產品規劃和專案管理，並且同時自營個人工作室；在職期間負責專案設計、企劃執行、管理與廠商溝通印製流程及跨部門協調事宜。
       `,
-      cardWork: [
-        {
-          title: '藝椅',
-          content: '測試測試'
-        },
-        {
-          title: '藝椅2',
-          content: '測試測試'
-        },
-        {
-          title: '藝椅3',
-          content: '測試測試'
-        },
-        {
-          title: '藝椅4',
-          content: '測試測試'
-        }
-      ],
       features: [
         {
           title: '珍奇椅',
