@@ -487,7 +487,7 @@ export default {
           description: [
             '網站類型｜購物車網站',
             '使用框架｜Vue3 optionAPI',
-            '套件｜Bootstrap5、Axios、vee-validate、Mitt'
+            '套件｜Vite、Bootstrap5、Axios、vee-validate、Mitt'
           ],
           other: 'a',
           imgUrl: 'work1',
@@ -708,7 +708,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $primary: #325b76;
 $secondary: #4e7e9f;
 $complementary: #764d32;
