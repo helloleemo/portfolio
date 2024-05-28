@@ -41,6 +41,12 @@
             @click="scrollToSection('section-gallery')"
             >Gallery</a
           >
+          <a
+            href="https://github.com/helloleemo/portfolio"
+            target="_blank"
+            class="px-4 custom-hover nav-link text-white"
+            ><v-icon icon="mdi-github"></v-icon
+          ></a>
         </div>
       </div>
     </div>
@@ -58,7 +64,7 @@
             ><v-img
               class="bg-grey-lighten-1"
               height="250"
-              src="https://picsum.photos/900/250"
+              src="https://picsum.photos/1400/200"
               cover
             ></v-img>
           </v-parallax>
@@ -98,7 +104,7 @@
   <!--  -->
   <div class="section" id="work-section">
     <h3 class="mx-auto text-center font-weight-bold text-h5 SectionTitle">
-      <span>｜</span>New<span>｜</span>
+      <span>｜</span>Frontend<span>｜</span>
     </h3>
     <v-fade-transition mode="out-in">
       <v-container class="container">
@@ -280,7 +286,7 @@
     <v-row>
       <v-col cols="12" md="4" sm="12" xs="12" v-for="img in filteredGallery" :key="img.title">
         <div @click="showSingle(img)">
-          <button class="imgbox rounded">
+          <button :class="{ cursorDefault: img.link }" class="imgbox rounded">
             <div class="imgbox imgboxGallery">
               <div class="hoverGallery text-start p-2">
                 <div class="textGallery px-3">
@@ -288,6 +294,9 @@
                   <h4 class="text-h5 text-white font-weight-bolder">{{ img.title }}</h4>
                   <p class="text-subtitle-1 text-white">{{ img.subtitle }}</p>
                   <p class="text-body-2 text-white">{{ img.description }}</p>
+                  <v-btn v-if="img.link" prepend-icon="mdi-github" :href="img.link" target="_blank"
+                    >view</v-btn
+                  >
                 </div>
               </div>
               <img :src="getImageSrc(img.imgUrl)" alt="" />
@@ -321,7 +330,6 @@ export default {
       gallery: [
         {
           id: '15',
-
           title: '寶島探險',
           imgUrl: '10-HPSS',
           subtitle: '使用者體驗研究',
@@ -329,6 +337,28 @@ export default {
             '高齡者在使用該版本的介面時，是否可以順利使用各項介面所提供的功能，以及是否能順利取得其在使用時所需要的資訊',
           category: 'Products'
         },
+        // {
+        //   id: '16',
+
+        //   title: '珍奇椅',
+        //   imgUrl: '珍奇椅',
+        //   subtitle: '購物車網站',
+        //   description:
+        //     '使用Vue + Vite進行開發，以Axios串接產品及購物車API，並使用Bootstrap5作為該網站的UI套件。',
+        //   category: 'Frontend',
+        //   link: 'https://github.com/helloleemo/shoppingweb'
+        // },
+        // {
+        //   id: '17',
+
+        //   title: '番茄鐘',
+        //   imgUrl: '珍奇椅',
+        //   subtitle: '購物車網站',
+        //   description:
+        //     '使用Vue + Vite進行開發，以Axios串接產品及購物車API，並使用Bootstrap5作為該網站的UI套件。',
+        //   category: 'Frontend',
+        //   link: 'https://github.com/helloleemo/shoppingweb'
+        // },
         {
           id: '01',
           title: '梅好薑來',
@@ -473,6 +503,10 @@ export default {
           title: 'Products',
           icon: 'mdi-cube-outline'
         }
+        // {
+        //   title: 'Frontend',
+        //   icon: 'mdi-laptop'
+        // }
       ],
 
       selectedItem: null,
@@ -486,7 +520,7 @@ export default {
           subtitle: 'subtitle',
           description: [
             '網站類型｜購物車網站',
-            '使用框架｜Vue3 optionAPI',
+            '框架｜Vue3 optionAPI、Vue router',
             '套件｜Vite、Bootstrap5、Axios、vee-validate、Mitt'
           ],
           other: 'a',
@@ -724,6 +758,9 @@ template {
 /*   Section  */
 /* ----------- */
 
+.cursorDefault {
+  cursor: default;
+}
 .navbar {
   a {
     cursor: pointer;

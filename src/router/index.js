@@ -30,6 +30,10 @@ const router = createRouter({
         {
           path: 'todolist',
           component: () => import('../views/TodoList.vue')
+        },
+        {
+          path: 'domotorotimer',
+          component: () => import('../views/DomotoroTimer.vue')
         }
       ]
     }
