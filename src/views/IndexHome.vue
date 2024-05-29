@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
           <a class="px-4 custom-hover nav-link text-white" @click="scrollToSection('work-section')"
-            >New</a
+            >Frontend</a
           >
           <a
             class="px-4 custom-hover nav-link text-white"
@@ -39,7 +39,7 @@
           <a
             class="px-4 custom-hover nav-link text-white"
             @click="scrollToSection('section-gallery')"
-            >Gallery</a
+            >Other Project</a
           >
           <a
             href="https://github.com/helloleemo/portfolio"
@@ -102,7 +102,7 @@
   <!--  -->
   <!-- Work -->
   <!--  -->
-  <div class="section" id="work-section">
+  <div class="pt-5" id="work-section">
     <h3 class="mx-auto text-center font-weight-bold text-h5 SectionTitle">
       <span>｜</span>Frontend<span>｜</span>
     </h3>
@@ -164,41 +164,35 @@
   <!-- Tools -->
   <!--  -->
 
-  <div class="section bg-grey-lighten-3">
-    <div class="bg-grey-lighten-3">
-      <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle">
-        <span>｜</span>Tools<span>｜</span>
-      </h3>
-      <v-container class="container">
-        <v-row no-gutters justify="start">
-          <v-col v-for="item in tools" :key="item" cols="12" sm="6" md="4" class="h-100">
-            <!-- 綁定插槽v-slot和v-bind，整個都是hover要出現的 -->
-            <v-hover v-slot="{ isHovering, props }">
-              <v-card :href="item.toolUrl" target="_blank" v-bind="props" class="m-2">
-                <v-img :src="getToolSrc(item.imgUrl)" height="350" cover>
-                  <!-- hover出現的部分 -->
-                  <v-expand-transition class="custom-bg" style="height: 100%">
-                    <v-card-item
-                      v-if="isHovering"
-                      class="d-flex transition-fast-in-fast-out v-card--reveal"
-                    >
-                      <v-card-subtitle class="text-white">{{ item.tag }}</v-card-subtitle>
-                      <v-card-title class="text-white font-weight-bold">
-                        <v-icon :icon="item.icon"></v-icon> {{ item.title }}
-                      </v-card-title>
-                      <v-card-subtitle class="text-white">{{ item.subtitle }}</v-card-subtitle>
-                      <v-card-text class="p-0 text-white">{{ item.description }}</v-card-text>
-                    </v-card-item>
-                  </v-expand-transition>
-                  <!-- hover出現的部分 -->
-                </v-img>
-              </v-card>
-            </v-hover>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
-  </div>
+  <h3 class="mx-auto text-center text-h5 font-weight-bold"></h3>
+  <v-container class="container">
+    <v-row no-gutters justify="start">
+      <v-col v-for="item in tools" :key="item" cols="12" sm="6" md="4" class="h-100">
+        <!-- 綁定插槽v-slot和v-bind，整個都是hover要出現的 -->
+        <v-hover v-slot="{ isHovering, props }">
+          <v-card :href="item.toolUrl" target="_blank" v-bind="props" class="m-2">
+            <v-img :src="getToolSrc(item.imgUrl)" height="350" cover>
+              <!-- hover出現的部分 -->
+              <v-expand-transition class="custom-bg" style="height: 100%">
+                <v-card-item
+                  v-if="isHovering"
+                  class="d-flex transition-fast-in-fast-out v-card--reveal"
+                >
+                  <v-card-subtitle class="text-white">{{ item.tag }}</v-card-subtitle>
+                  <v-card-title class="text-white font-weight-bold">
+                    <v-icon :icon="item.icon"></v-icon> {{ item.title }}
+                  </v-card-title>
+                  <v-card-subtitle class="text-white">{{ item.subtitle }}</v-card-subtitle>
+                  <v-card-text class="p-0 text-white">{{ item.description }}</v-card-text>
+                </v-card-item>
+              </v-expand-transition>
+              <!-- hover出現的部分 -->
+            </v-img>
+          </v-card>
+        </v-hover>
+      </v-col>
+    </v-row>
+  </v-container>
 
   <!--  -->
   <!-- Achievement -->
@@ -268,7 +262,7 @@
   <!--  -->
   <hr class="mt-5" />
   <h3 class="mx-auto text-center text-h5 font-weight-bold SectionTitle" id="section-gallery">
-    <span>｜</span>Gallery<span>｜</span>
+    <span>｜</span>Other Project<span>｜</span>
   </h3>
   <v-container class="container mx-auto imgpadding">
     <!-- tag -->
@@ -772,7 +766,7 @@ template {
 }
 
 .SectionTitle {
-  padding: 50px 0px;
+  padding-top: 50px;
 }
 
 /* ----------- */
