@@ -34,6 +34,10 @@ const router = createRouter({
         {
           path: 'domotorotimer',
           component: () => import('../views/DomotoroTimer.vue')
+        },
+        {
+          path: 'weatherapi',
+          component: () => import('../views/WeatherApi.vue')
         }
       ]
     }

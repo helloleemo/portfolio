@@ -4,6 +4,10 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+//Axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 //BS
 import './assets/all.scss'
 import './assets/main.css'
@@ -14,6 +18,8 @@ import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+
+//
 
 //vue-easy-lightbox
 import VueEasyLightbox from 'vue-easy-lightbox'
@@ -47,5 +53,6 @@ app.use(createPinia())
 app.use(router)
 app.use(vuetify)
 app.use(VueEasyLightbox)
+app.use(VueAxios, axios)
 
 app.mount('#app')

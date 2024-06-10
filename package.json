@@ -12,10 +12,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@material/card": "^14.0.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "pinia": "^2.1.7",
     "react-photo-view": "^1.2.4",
     "vue": "^3.4.21",
+    "vue-axios": "^3.5.2",
     "vue-easy-lightbox": "^1.19.0",
     "vue-router": "^4.3.0",
     "vuetify": "^3.6.7"
