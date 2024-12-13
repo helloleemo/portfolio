@@ -1,16 +1,20 @@
 <script>
 // import TheWelcome from '../components/TheWelcome.vue'
 export default {
-  data() {
-    return {}
-  },
-  methods: {
-    getToIndex() {
-      this.$router.push('/view/home')
-    }
-  },
-  created() {
-    this.getToIndex()
+  mounted() {
+    window.location.replace('https://helloleemo.github.io/helloleemotseng/')
+    // },
+    // data() {
+    //   return {}
+    // },
+    // methods: {
+    //   getToIndex() {
+    //     this.$router.push('/view/home')
+    //   }
+    // },
+    // created() {
+    //   this.getToIndex()
+    // }
   }
 }
 </script>
