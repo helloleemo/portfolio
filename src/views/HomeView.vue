@@ -1,7 +1,7 @@
 <script>
 // import TheWelcome from '../components/TheWelcome.vue'
 export default {
-  mounted() {
+  beforeCreate() {
     window.location.replace('https://helloleemo.github.io/helloleemotseng/')
     // },
     // data() {

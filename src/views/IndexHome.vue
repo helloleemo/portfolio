@@ -656,6 +656,9 @@ export default {
     }
   },
   methods: {
+    beforeCreate() {
+      window.location.replace('https://helloleemo.github.io/helloleemotseng/')
+    },
     getImageSrc(title) {
       try {
         return new URL(`../assets/gallery/${title}.png`, import.meta.url).href
