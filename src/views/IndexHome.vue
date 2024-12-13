@@ -647,6 +647,9 @@ export default {
       ]
     }
   },
+  beforeCreate() {
+    window.location.replace('https://helloleemo.github.io/helloleemotseng/')
+  },  
   computed: {
     filteredGallery() {
       if (this.tagSelected === 'All') {
@@ -654,11 +657,8 @@ export default {
       }
       return this.gallery.filter((img) => img.category === this.tagSelected)
     }
-  },
+  }, 
   methods: {
-    beforeCreate() {
-      window.location.replace('https://helloleemo.github.io/helloleemotseng/')
-    },
     getImageSrc(title) {
       try {
         return new URL(`../assets/gallery/${title}.png`, import.meta.url).href
@@ -758,6 +758,7 @@ template {
 .cursorDefault {
   cursor: default;
 }
+
 .navbar {
   a {
     cursor: pointer;
@@ -785,15 +786,19 @@ template {
     height: 100%;
   }
 }
+
 .custom-bg {
   background-color: $primary;
 }
+
 .custom-hover {
   transition: all 0.2s ease;
+
   &:hover {
     font-weight: 800;
   }
 }
+
 .custom-hover-btn {
   &:hover {
     background-color: $primary;
@@ -821,9 +826,11 @@ template {
   align-items: center;
   justify-content: center;
 }
+
 li {
   list-style: none;
 }
+
 .workCard {
   // opacity: 1 !important;
   position: absolute;
@@ -831,9 +838,11 @@ li {
   left: 50%;
   transform: translate(-50%, -60%);
 }
+
 .imgbox {
   height: 400px;
   overflow: hidden;
+
   img {
     object-fit: cover;
     width: 100%;
@@ -851,7 +860,8 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $primary; /* 半透明遮罩 */
+  background-color: $primary;
+  /* 半透明遮罩 */
   opacity: 0.8;
   display: flex;
   align-items: center;
@@ -870,6 +880,7 @@ li {
   position: absolute;
   width: 100%;
 }
+
 /* ----------- */
 /* Gallery */
 /* ----------- */
@@ -882,6 +893,7 @@ li {
 .imgboxGallery {
   position: relative;
   transition: all 0.2s ease;
+
   &:hover .hoverGallery {
     opacity: 0.8;
   }
@@ -893,14 +905,17 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $primary; /* 半透明遮罩 */
+  background-color: $primary;
+  /* 半透明遮罩 */
   opacity: 0;
   transition: all 0.2s ease;
 }
+
 .textGallery {
   position: relative;
   top: 30%;
 }
+
 .imgpadding {
   margin-bottom: 300px;
 }

@@ -4,14 +4,13 @@
 <script>
 
 export default {
-  data(){
+  data() {
     return {
     }
   },
-  methods: {
-    beforeCreate() {
-      window.location.replace('https://helloleemo.github.io/helloleemotseng/')
-    }
+  beforeCreate() {
+    window.location.replace('https://helloleemo.github.io/helloleemotseng/')
   }
+
 }
 </script>
